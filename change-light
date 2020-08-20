@@ -1,0 +1,27 @@
+#!/bin/bash
+MIN=0
+MAX=4794
+CURRENT=$(< /sys/class/backlight/intel_backlight/brightness)
+VALUE=$(echo "$1" | sed 's/^[+-]//' | sed 's/%$//')
+
+case $1 in
+  +*% )NEW=$(($CURRENT + ($VALUE * $MAX / 100)));;
+  -*% )NEW=$(($CURRENT - ($VALUE * $MAX / 100)));;
+  *%  )NEW=$(($VALUE * $MAX / 100));;
+  +*  )NEW=$(($CURRENT + $VALUE));;
+  -*  )NEW=$(($CURRENT - $VALUE));;
+  [0-9]*) NEW=$VALUE;;
+  *) NEW=$MAX;;
+esac
+
+
+if [ $NEW -lt $MIN ]; then
+  NEW=$MIN
+fi
+if [ $NEW -gt $MAX ]; then
+  NEW=$MAX
+fi
+echo "VALUE: $NEW"
+
+notify-send -t 250 Brightness "$((100 * $NEW / $MAX))%"
+echo $NEW > /sys/class/backlight/intel_backlight/brightness
