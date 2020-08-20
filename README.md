@@ -4,7 +4,7 @@ Welcome to my little project to help i3wm newbees with several first steps in th
 
 ## Operating System
 
-When I setup my current environment I was confronted with the question which OS shall be taken. I know this is a very personal question for everyone. I decided for [Ubuntu 18.04](http://releases.ubuntu.com/18.04/), because it is widely spread and I am already used to it. Feel free to use your flavour, but be aware that my solutions here are tested on Ubuntu only. If anything changes in the future, it changes. :)
+When I setup my current environment I was confronted with the question which OS shall be taken. I know this is a very personal question for everyone. I decided for [Ubuntu 20.04](http://releases.ubuntu.com/20.04/), because it is widely spread and I am already used to it. Feel free to use your flavour, but be aware that my solutions here are tested on Ubuntu only. If anything changes in the future, it changes. :)
 
 ## Disclaimer
 
