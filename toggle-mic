@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pactl set-source-mute 1 toggle
+pactl list sources | grep -qi 'Mute: yes'
+if [ "$?" -eq "0" ]; then
+  MESSAGE="Microphone is muted!"
+else
+  MESSAGE="Microphone is unmuted!"
+fi
+
+notify-send -t 300 Micro "$MESSAGE"

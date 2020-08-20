@@ -1,0 +1,17 @@
+#!/bin/bash
+# link to /usr/bin
+
+VOLUMES_OF_SINKS=$(pactl list sinks | grep '^[[:space:]]Volume:')
+NUMBER_OF_SINKS_IN_LIST=$(echo "$VOLUMES_OF_SINKS"| wc -l)
+LINE_ITERATOR=1
+MESSAGE=""
+for SINK_ID in $(pactl list sinks | grep -oP '(?<=Sink #)[0-9]+')
+do
+
+  SINK_VOLUME_ENTRY=$(echo "$VOLUMES_OF_SINKS" | head -n $LINE_ITERATOR | tail -n 1)
+  SINK_VOLUME_VALUE=$(echo "$SINK_VOLUME_ENTRY" | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,') 
+  MESSAGE="$MESSAGE\nSink $SINK_ID: $SINK_VOLUME_VALUE%"
+  LINE_ITERATOR=$(($LINE_ITERATOR + 1))
+done
+notify-send -t 200 Audio "$MESSAGE"
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for SINK_ID in $(pactl list sinks | grep -oP '(?<=Sink #)[0-9]+')
+do
+  pactl set-sink-volume $SINK_ID $1
+done
+notify-audio
