@@ -1,0 +1,11 @@
+[Unit]
+Description=Lock the screen on resume from suspend
+Before=sleep.target suspend.target
+
+[Service]
+User=aduril
+Type=forking
+ExecStart=/usr/bin/i3exit lock
+
+[Install]
+WantedBy=sleep.target suspend.target
