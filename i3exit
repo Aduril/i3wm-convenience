@@ -1,0 +1,28 @@
+#!/bin/zsh
+I3IMAGES="$(dirname $(realpath $0))/i3images"
+
+lock () { 
+  IMAGE="$(find $I3IMAGES -type f -exec file {} \; | grep -o -P '^.+: \w+ image' | cut -f1 -d: | shuf -n 1)"
+  export DISPLAY=$(w -hs | awk '{print $3}' | sort -u | head -n 1);
+  i3lock -t -i $IMAGE;
+}
+
+case "$1" in
+  lock)
+    lock;;
+  logout)
+    i3-msg exit;;
+  suspend)
+    lock;sudo systemctl suspend;;
+  hibernate)
+    lock;sudo systemctl hibernate;;
+  reboot)
+    sudo systemctl reboot;;
+  shutdown)
+    sudo systemctl poweroff;;
+  *)
+    echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+    exit 2
+esac
+
+exit 0
