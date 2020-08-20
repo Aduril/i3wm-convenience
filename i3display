@@ -1,0 +1,23 @@
+displays:
+  - name: eDP-1
+    workspaces: [1,2]
+  - name: HDMI-1
+    workspaces: [3,4]
+    randr_extra_options: "--above eDP-1"
+  - name: VGA-1
+    workspaces: [5,6]
+    randr_extra_options: "--left-of eDP-1 --mode 1920x1080"
+# Display 1:
+#  Browser - private
+# Display 2:
+#  Emacs
+# Display 3:
+#  Browser - work
+# Display 4:
+#  Emacs
+# Display 5:
+#  Browser - Video
+# Display 6:
+#  Video
+#  Messenger & Mail
+
