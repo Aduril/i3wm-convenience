@@ -1,0 +1,55 @@
+* i3wm-convenience
+
+_THIS IS CURRENTLY IN CONSTRUCTION - DO NOT USE YET_
+
+Welcome to my little project to help i3wm newbies with several first steps
+in the great world of [[https://i3wm.org/i3lock/][i3wm]].
+If there are any questions regarding my solutions or suggestions
+how to improve them, feel free to contact me or just open an issue.
+
+** Installation
+
+TL;DR:
+Please run the following line. 
+It should install all requirements from apt and put each file in the right place
+
+#+BEGIN_SRC
+wget https://raw.githubusercontent.com/Aduril/i3wm-convenience/master/bootstrap.sh; chmod 744 bootstrap.sh; ./bootstrap.sh 
+#+END_SRC
+
+** What features are included yet?
+
+*** Media Keys
+
+I've implemented the functionality of some of my Media Keys, like:
+- Microphone Mute/Unmute Toggle
+- Volume Up/Down/Silence Buttons
+- Display Brightness Up/Down
+
+*** Random Wallpaper Lock Screen
+
+I use the [[https://i3wm.org/i3lock/][i3lock tool]], but wrapped it, so that it takes a random image
+from a specific folder.
+
+*** I3 Autodisplay
+
+I installed [[https://github.com/lpicanco/i3-autodisplay][lpicanco's i3-autodisplay]] to enable smoother handling
+of added displays.
+
+*** 
+
+** Operating System
+
+When I setup my current environment I was confronted with the question
+which OS shall be taken.
+I know this is a very personal question for everyone.
+I decided for [[http://releases.ubuntu.com/20.04/][Ubuntu 20.04]], because it is widely spread and I am already used to it.
+
+** Disclaimer & Acknowledgment
+
+I am not associated with anyone from the i3wm project and
+consider myself as nothing more than a newbie,
+that wants to save other people's time by collecting some hacks and
+tools that I stumbled upon on my way here. Hence, as everywhere in life
+it goes without saying: Think for yourselves before using anything
+that someone posted on the internet. :)
