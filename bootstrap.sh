@@ -5,3 +5,23 @@
 # everywhere, where an Ubuntu or debian exists that has some sort of apt installed.
 
 echo "Welcome to AI3IS (Adurils I3 Install Script)! We will install everything now."
+sudo apt -y install\
+     curl\
+     dunst\
+     guake\
+     i3\
+     nitrogen\
+     scrot\
+     udiskie\
+     xautolock
+
+# i3exit
+# change-light
+# change-audio
+# toggle-mic
+# nm-applet
+# nextcloud
+# guake
+# nautilus
+# i3-autodisplay
+# guake
