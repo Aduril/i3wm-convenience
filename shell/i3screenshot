@@ -1,0 +1,15 @@
+#!/bin/sh
+# Wrapper for screenshot behavior
+# Combines scrot (making and storing  screenshot ) with xclip
+# parameters:
+# -a, --area: Allows selection of screenshot area
+
+DIR="$HOME/Pictures/screenshots"
+mkdir -p "$DIR"
+if [ "$1" = "--area" ] || [ "$1" = "-a" ]; then
+  scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f '$DIR
+else
+  scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f '$DIR
+fi
+FILE=$(ls -1 -t $DIR | head -1)
+xclip -selection clipboard -t image/png -i $DIR/$FILE
