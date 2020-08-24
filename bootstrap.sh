@@ -13,7 +13,8 @@ sudo apt -y install\
      nitrogen\
      scrot\
      udiskie\
-     xautolock
+     xautolock\
+     xclip
 
 # i3exit
 # change-light
@@ -21,7 +22,5 @@ sudo apt -y install\
 # toggle-mic
 # nm-applet
 # nextcloud
-# guake
 # nautilus
 # i3-autodisplay
-# guake
