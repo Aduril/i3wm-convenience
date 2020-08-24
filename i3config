@@ -155,11 +155,24 @@ bar {
         status_command i3status
 }
 
-# Stuff that I added
+# Everything before this line the default config and was not changed by me
+# (as far as I remember)
+# ----------------------------------------------------------------
+# Below this line is the stuff I added
 
+# Moving through workspaces
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+# moving work spaces around the outputs
+bindsym $mod+Ctrl+Up move workspace to output up
+bindsym $mod+Ctrl+Down move workspace to output down
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
+
+# A script to handle logout, lock, suspend, reboot,... with a shortcut
+# Probobly I took the idea from here:
+# https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -175,30 +188,30 @@ mode "$mode_system" {
 }
 bindsym $mod+Insert mode "$mode_system"
 
+# Show that capslock is activated
 mode "⇪" {
         bindsym Caps_Lock mode "default"
 }
-
 bindsym Caps_Lock mode "⇪"
-# Screen brightness controls
+
+# Media Keys
 bindsym XF86MonBrightnessUp exec sudo change-light +1% # up brightness
 bindsym XF86MonBrightnessDown exec sudo change-light -1% # down brightness
 bindsym XF86AudioRaiseVolume exec change-audio +1%
 bindsym XF86AudioLowerVolume exec change-audio -1%
 bindsym XF86AudioMute exec change-audio 0%
 bindsym XF86AudioMicMute exec toggle-mic
+
+# -----------------------------------------------------------------------------
+# Here begins the part where I included third party software that you may or may not want to use
+
 # Multi-screen screenshots with scrot
-bindsym --release Home exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
+bindsym --release Home exec i3screenshot
 
 # OSX-like area selection screenshots
-bindsym --release $mod+Home exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+bindsym --release $mod+Home exec i3screenshot --area
 
-bindsym $mod+Ctrl+Up move workspace to output up
-bindsym $mod+Ctrl+Down move workspace to output down
-bindsym $mod+Ctrl+Left move workspace to output left
-bindsym $mod+Ctrl+Right move workspace to output right
-
-# Auto Start programs
+# Auto Start
 exec_always nm-applet
 exec_always dunst
 exec --no-startup-id udiskie --smart-tray --file-manager=nautilus
